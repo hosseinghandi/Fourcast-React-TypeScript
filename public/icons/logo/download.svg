@@ -1,0 +1,40 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sun rays -->
+  <g stroke="currentColor" stroke-width="10" stroke-linecap="round">
+    <line x1="88" y1="20" x2="88" y2="6"></line>
+    <line x1="42" y1="42" x2="30" y2="30"></line>
+    <line x1="20" y1="88" x2="6" y2="88"></line>
+    <line x1="134" y1="42" x2="146" y2="30"></line>
+  </g>
+
+  <!-- Sun -->
+  <circle cx="88" cy="88" r="42" fill="currentColor"></circle>
+
+  <!-- Crescent separator cut -->
+  <circle cx="112" cy="112" r="18" fill="white"></circle>
+
+  <!-- Cloud -->
+  <path d="M78 176
+       H190
+       C208 176 222 162 222 144
+       C222 129 211 118 196 116
+       C196 91 176 72 150 72
+       C126 72 106 89 104 114
+       C99 111 92 110 86 110
+       C59 110 38 131 38 158
+       C38 183 58 202 82 202
+       H190
+       C210 202 226 186 226 166
+       C226 148 214 136 198 134" fill="currentColor"></path>
+
+  <!-- Rain -->
+  <g stroke="currentColor" stroke-width="10" stroke-linecap="round">
+    <line x1="84" y1="214" x2="70" y2="232"></line>
+    <line x1="130" y1="214" x2="116" y2="232"></line>
+    <line x1="176" y1="214" x2="162" y2="232"></line>
+
+    <line x1="84" y1="248" x2="70" y2="266"></line>
+    <line x1="130" y1="248" x2="116" y2="266"></line>
+    <line x1="176" y1="248" x2="162" y2="266"></line>
+  </g>
+</svg>
