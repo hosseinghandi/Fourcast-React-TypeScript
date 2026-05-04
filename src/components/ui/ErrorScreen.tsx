@@ -1,7 +1,7 @@
 type Props = {
-  message?: string;
+  message?: Error | null;
 };
 
 export default function ErrorScreen({ message }: Props) {
-  return <h1>ErrorScreen: {message}</h1>;
+  return <h1>ErrorScreen: {message?.message}</h1>;
 }

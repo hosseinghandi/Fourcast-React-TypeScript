@@ -1,17 +1,19 @@
 export default function Header() {
-  return <h1>Header</h1>;
+  return (
+    <>
+      <nav aria-label="main nav" className="h-[10vh] w-full">
+        {/* logo holder */}
+        <div className="flex flex-row ">
+          <span>fourCast</span>
+          <div className="w-[25px] h-[25px]">
+            <img
+              className="conatin w-full h-full "
+              src="/icons/logo/logo-black.png"
+              alt="Logo of the web"
+            />
+          </div>
+        </div>
+      </nav>
+    </>
+  );
 }
-
-
-
-  // locationEl.innerHTML = `<img 
-  //               class="loc-icon-s"
-  //               src="icons/detailed/loc-${currentSky ? "b" : "w"}.png" 
-  //               alt=" a location icon">
-  //               <span   class="location" 
-  //                       id="location">${locationName}</span>`;
-
-  // mainTempEl.innerHTML = `${current.apparent_temperature.toFixed(0)}<span class="degree">°</span>`;
-  // highTempEl.innerHTML = `H:<span id="feelslike_temp">${daily.temperature_2m_max[0].toFixed(0)}°</span>`;
-  // lowTempEl.innerHTML = `L:<span id="feelslike_temp">${daily.temperature_2m_min[0].toFixed(0)}°</span>`;
-  // generalWeatherState.innerText = weathercodeOfcurrentTimedesc;

@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import useWeatherDataApi from "../services/weatherDataApi";
+import weatherDataApi from "../services/weatherDataApi";
 import type { Coord } from "../types/fetching";
 
 export default function useWeatherData(coord: Coord | null) {
   return useQuery({
-    queryKey: ["weatherData", coord],
-    queryFn: () => useWeatherDataApi(coord!),
+    queryKey: ["weatherData", coord?.latitude, coord?.longitude],
     enabled: !!coord,
+    queryFn: () => weatherDataApi(coord),
   });
 }

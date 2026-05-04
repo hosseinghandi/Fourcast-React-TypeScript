@@ -12,3 +12,4 @@ export { default as PressureCard } from "./ui/PressureCard";
 export { default as RainCard } from "./ui/RainCard";
 export { default as ErrorScreen } from "./ui/ErrorScreen";
 export { default as LoadingScreen } from "./ui/LoadingScreen";
+export { default as SpinLoader } from "./ui/SpinLoader";

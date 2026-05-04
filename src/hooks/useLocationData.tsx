@@ -5,8 +5,8 @@ import locationDataApi from "../services/locationDataApi";
 
 export default function useLocationData(coord: Coord | null) {
   return useQuery({
-    queryKey: ["locationData", coord],
-    queryFn: () => locationDataApi(coord!),
+    queryKey: ["locationData", coord?.latitude, coord?.longitude],
+    queryFn: () => locationDataApi(coord),
     enabled: !!coord,
   });
 }

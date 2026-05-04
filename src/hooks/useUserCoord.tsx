@@ -2,19 +2,16 @@ import { useState, useEffect } from "react";
 import type { Coord, FetchingStructure } from "../types/fetching";
 
 function useUserCoord(): FetchingStructure<Coord> {
-  const [data, setdata] = useState<Coord | null>({
-    latitude: 0,
-    longitude: 0,
-  });
+  const [data, setData] = useState<Coord | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        setdata({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
+      (pos) => {
+        setData({
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
         });
         setLoading(false);
       },
