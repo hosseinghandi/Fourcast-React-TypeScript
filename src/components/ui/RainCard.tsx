@@ -1,7 +1,11 @@
-export default function RainCard() {
-  return <h1>RainCard</h1>;
+type props = {
+  rainValue: number[];
+};
+export default function RainCard({ rainValue }: props) {
+  return (
+    <>
+      <h1>RAINCARD</h1>
+      <h1>{rainValue[0]}</h1>
+    </>
+  );
 }
-
-  // rainIndicator.style.left = `${daily.precipitation_probability_mean[0]}%`;
-  // rainEl.innerHTML = `<strong class="detail-value">${daily.precipitation_probability_mean[0]}</strong>%`;
-

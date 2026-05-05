@@ -1,7 +1,6 @@
-
-export function filterTime(timelist :string[]) {
+export function filterTime(timelist: string[]) {
   const correctedTime = [];
-  timelist.forEach((t:any) => {
+  timelist.forEach((t: any) => {
     if (t == "00") {
       correctedTime.push("24");
     } else if (t <= 9) {

@@ -20,39 +20,33 @@ type MainLayoutProps = {
 };
 
 export function MainLayout({ location, weather }: MainLayoutProps) {
-  console.log(weather);
-
+  console.log(weather.daily);
   return (
     <>
       <Header />
       <main>
-        <WeatherBanner
-          name={location.name ?? location.display_name}
-          weatherData={weather}
-        />
+        <VideoBackground {...weather.current} />
+        <div className="border-b-1">
+          <WeatherBanner
+            name={location.name ?? location.display_name}
+            weatherData={weather}
+          />
+        </div>
+        <div className="border-b-1">
+          <HourlyForecast {...weather.hourly} />
+        </div>
+        <div className="border-b-1">
+          <WeeklyForecast {...weather.daily} />
+        </div>
 
-        <section>
-          <HourlyForecast />
-          <WeeklyForecast />
-        </section>
+        <HumidityCard humidityValue={weather.daily.relative_humidity_2m_mean} />
+        <PressureCard pressureValue={weather.daily.pressure_msl_mean} />
+        <WindCard {...weather.current} />
 
-        <section>
-          <HumidityCard />
-          <PressureCard />
-          <WindCard />
-        </section>
-
-        <section>
-          <RainCard />
-          <VisibilityCard />
-          <UVCard />
-        </section>
-
-        <section>
-          <SunPath />
-        </section>
-
-        <VideoBackground />
+        <RainCard rainValue={weather.daily.precipitation_probability_mean} />
+        <VisibilityCard visibilityValue={weather.daily.visibility_mean} />
+        <UVCard uvValue={weather.daily.uv_index_max} />
+        <SunPath {...weather.daily} />
       </main>
 
       <footer>{/* add footer content later */}</footer>

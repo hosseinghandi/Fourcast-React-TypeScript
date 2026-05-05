@@ -1,5 +1,7 @@
-export default function HumidityCard() {
-  return <h1>HumidityCard</h1>;
-}
+type props = {
+  humidityValue: number[];
+};
 
-  // humidity.innerHTML = `<strong class="detail-value">${daily.relative_humidity_2m_mean[0]}%</strong>`;
+export default function HumidityCard({ humidityValue }: props) {
+  return <h1>{humidityValue[0]}</h1>;
+}

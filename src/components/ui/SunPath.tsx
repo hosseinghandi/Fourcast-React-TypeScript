@@ -1,8 +1,16 @@
-export default function SunPath() {
-  return <h1>SunPath</h1>;
+type props = {
+  sunrise: string[];
+  sunset: string[];
+};
+export default function SunPath({ sunrise, sunset }: props) {
+  return (
+    <>
+      <h1>SUNPATH</h1>
+      <h1>{sunrise[0]}</h1>
+      <h1>{sunset[0]}</h1>
+    </>
+  );
 }
-
-
 
 // function sunRiseShine() {
 //   const sunRise = daily.sunrise[0].split("T")[1];

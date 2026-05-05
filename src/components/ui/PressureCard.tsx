@@ -1,5 +1,6 @@
-export default function PressureCard() {
-  return <h1>PressureCard</h1>;
+type props = {
+  pressureValue: number[];
+};
+export default function PressureCard({ pressureValue }: props) {
+  return <h1>{pressureValue[0]}</h1>;
 }
-
-  // pressureEl.innerHTML = `<strong class="detail-value">${daily.pressure_msl_mean[0]}</strong> hPa`;

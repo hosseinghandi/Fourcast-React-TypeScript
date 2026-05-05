@@ -1,8 +1,24 @@
-export default function WindCard() {
-  return <h1>WindCard</h1>;
+type props = {
+  wind_speed_10m: number;
+  wind_gusts_10m: number;
+  wind_direction_10m: number;
+};
+export default function WindCard({
+  wind_speed_10m,
+  wind_gusts_10m,
+  wind_direction_10m,
+}: props) {
+  return (
+    <>
+      <h1>WINDPATH</h1>
+      <div className="flex flex-row gap-4">
+        <h1>{wind_speed_10m}</h1>
+        <h1>{wind_gusts_10m}</h1>
+        <h1>{wind_direction_10m}</h1>
+      </div>
+    </>
+  );
 }
-
-
 
 // function windRender() {
 //   windArrow.style.setProperty("--angle", `${current.wind_direction_10m}deg`);

@@ -1,7 +1,11 @@
-export default function VisibilityCard() {
-  return <h1>VisibilityCard</h1>;
+type props = {
+  visibilityValue: number[];
+};
+export default function VisibilityCard({ visibilityValue }: props) {
+  return (
+    <>
+      <h1>VISIBILITY</h1>
+      <h1>{visibilityValue[0]}</h1>
+    </>
+  );
 }
-
-  // visibilityEl.innerHTML = `<strong class="detail-value">${(
-  //   daily.visibility_mean[0] / 1000
-  // ).toFixed()}</strong> km`;

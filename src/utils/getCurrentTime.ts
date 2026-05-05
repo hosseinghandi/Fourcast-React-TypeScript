@@ -1,4 +1,6 @@
-const days = [
+import type { NowDataType } from "../types/data";
+
+const days: string[] = [
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -8,9 +10,9 @@ const days = [
   "Sunday",
 ];
 
-export default function now() {
+export default function getCurrentTime(): NowDataType {
   var now = new Date();
   const today = days[now.getDay()];
   const time = now.getHours();
-  return [today, time];
+  return { today: today, time: time };
 }
