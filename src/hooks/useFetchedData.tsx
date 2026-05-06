@@ -1,8 +1,9 @@
 import useLocationData from "./useLocationData";
 import useWeatherData from "./useWeatherData";
 import useUserCoord from "./useUserCoord";
+import type { FetchedDataStructure } from "../types/hooks";
 
-export function useFetchedData() {
+export function useFetchedData(): FetchedDataStructure {
   const coord = useUserCoord();
 
   const location = useLocationData(coord.data);

@@ -1,17 +1,5 @@
 // weatherCodes.ts
-export type WeatherCondition = {
-  description: string;
-  category: string;
-};
-
-type DayNightMap = {
-  0: WeatherCondition; // night
-  1: WeatherCondition; // day
-};
-
-type WeatherCodes = {
-  [code: number]: DayNightMap;
-};
+import type { WeatherCodes } from "../types/weatherCode";
 
 export const weatherCodes: WeatherCodes = {
   0: {

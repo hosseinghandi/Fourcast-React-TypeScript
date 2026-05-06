@@ -1,3 +1,4 @@
+import type React from "react";
 import {
   Header,
   WeatherBanner,
@@ -12,7 +13,7 @@ import {
   SunPath,
   VideoBackground,
 } from "../../components";
-import type { LocationResponse, WeatherResponse } from "../../types/fetching";
+import type { LocationResponse, WeatherResponse } from "../../types/api";
 
 type MainLayoutProps = {
   location: LocationResponse;
@@ -20,19 +21,16 @@ type MainLayoutProps = {
 };
 
 export function MainLayout({ location, weather }: MainLayoutProps) {
-  console.log(weather.daily);
   return (
     <>
       <Header />
-      <main>
-        <VideoBackground {...weather.current} />
-        <div className="border-b-1">
-          <WeatherBanner
-            name={location.name ?? location.display_name}
-            weatherData={weather}
-          />
-        </div>
-        <div className="border-b-1">
+      <main className="flex flex-col items-center justify-center w-full">
+        {/* <VideoBackground {...weather.current} /> */}
+        <WeatherBanner
+          name={location.name ?? location.display_name}
+          weatherData={weather}
+        />
+        {/* <div className="border-b-1">
           <HourlyForecast {...weather.hourly} />
         </div>
         <div className="border-b-1">
@@ -46,10 +44,10 @@ export function MainLayout({ location, weather }: MainLayoutProps) {
         <RainCard rainValue={weather.daily.precipitation_probability_mean} />
         <VisibilityCard visibilityValue={weather.daily.visibility_mean} />
         <UVCard uvValue={weather.daily.uv_index_max} />
-        <SunPath {...weather.daily} />
+        <SunPath {...weather.daily} /> */}
       </main>
 
-      <footer>{/* add footer content later */}</footer>
+      <footer></footer>
     </>
   );
 }

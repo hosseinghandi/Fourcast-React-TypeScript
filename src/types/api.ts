@@ -1,11 +1,5 @@
 export type Coord = { latitude: number; longitude: number } | null;
 
-export interface FetchingStructure<T> {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-}
-
 export interface LocationResponse {
   lat: string;
   lon: string;

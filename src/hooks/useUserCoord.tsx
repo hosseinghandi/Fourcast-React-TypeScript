@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import type { Coord, FetchingStructure } from "../types/fetching";
+import type { Coord } from "../types/api";
+import type { FetchingStructure } from "../types/hooks";
 
 function useUserCoord(): FetchingStructure<Coord> {
   const [data, setData] = useState<Coord | null>(null);
