@@ -1,3 +1,6 @@
+import { Card, CardTitle } from "../../components";
+import iconList from "../../constant/iconList";
+import WindCompass from "../shared/WindCompass";
 type props = {
   wind_speed_10m: number;
   wind_gusts_10m: number;
@@ -8,14 +11,31 @@ export default function WindCard({
   wind_gusts_10m,
   wind_direction_10m,
 }: props) {
+  const tableRow = [
+    { title: "Wind", value: wind_speed_10m },
+    { title: "Guts", value: wind_gusts_10m },
+    { title: "Direction", value: wind_direction_10m },
+  ];
   return (
     <>
-      <h1>WINDPATH</h1>
-      <div className="flex flex-row gap-4">
-        <h1>{wind_speed_10m}</h1>
-        <h1>{wind_gusts_10m}</h1>
-        <h1>{wind_direction_10m}</h1>
-      </div>
+      <Card>
+        <CardTitle title="Wind" Icon={iconList.Wind} />
+        <div className="flex flex-row justify-between items-center">
+          <table className="w-1/2">
+            {tableRow.map(({ title, value }) => (
+              <tr
+                key={title}
+                className="border-b 
+              flex flex-row justify-between"
+              >
+                <td>{title}</td>
+                <td>{value}</td>
+              </tr>
+            ))}
+          </table>
+          <WindCompass angleDeg={wind_direction_10m} />
+        </div>
+      </Card>
     </>
   );
 }

@@ -24,27 +24,24 @@ export function MainLayout({ location, weather }: MainLayoutProps) {
   return (
     <>
       <Header />
-      <main className="flex flex-col items-center justify-center w-full">
-        {/* <VideoBackground {...weather.current} /> */}
+      <main
+        className="flex flex-col items-center min-h-screen bg-gray-200
+      justify-center w-full border-1 px-large gap-large"
+      >
+        <VideoBackground {...weather.current} />
         <WeatherBanner
-          name={location.name ?? location.display_name}
+          name={location.address.road ?? location.address.city}
           weatherData={weather}
         />
-        {/* <div className="border-b-1">
-          <HourlyForecast {...weather.hourly} />
-        </div>
-        <div className="border-b-1">
-          <WeeklyForecast {...weather.daily} />
-        </div>
-
+        <HourlyForecast {...weather.hourly} />
+        <WeeklyForecast {...weather.daily} />
         <HumidityCard humidityValue={weather.daily.relative_humidity_2m_mean} />
         <PressureCard pressureValue={weather.daily.pressure_msl_mean} />
-        <WindCard {...weather.current} />
-
         <RainCard rainValue={weather.daily.precipitation_probability_mean} />
         <VisibilityCard visibilityValue={weather.daily.visibility_mean} />
         <UVCard uvValue={weather.daily.uv_index_max} />
-        <SunPath {...weather.daily} /> */}
+        <WindCard {...weather.current} />
+        <SunPath {...weather.daily} />
       </main>
 
       <footer></footer>

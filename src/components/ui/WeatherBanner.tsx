@@ -2,8 +2,11 @@ import type { LocationResponse, WeatherResponse } from "../../types/api";
 import type { WeatherCondition } from "../../types/weatherCode";
 import { getWeatherCode } from "../../utils/getWeatherCode";
 import iconList from "../../constant/iconList";
+
 type WeatherBannerProps = {
-  name: LocationResponse["display_name"] | LocationResponse["name"];
+  name:
+    | LocationResponse["address"]["city"]
+    | LocationResponse["address"]["road"];
   weatherData: WeatherResponse;
 };
 
@@ -23,7 +26,10 @@ export default function WeatherBanner({
 
   return (
     <>
-      <div className="flex flex-col gap-small w-fit justify-center items-center mt-large">
+      <div
+        className="flex flex-col gap-small 
+      w-fit justify-center items-center mt-large"
+      >
         <h1
           aria-label="Current temperature"
           className="text-temp-current font-bold leading-30"
@@ -50,7 +56,7 @@ export default function WeatherBanner({
             aria-hidden="true"
             className="size-icon-small dark:text-foreground"
           />
-          <p aria-label="Current position">{name}</p>
+          <p aria-label="Current location">{name}</p>
         </div>
       </div>
     </>

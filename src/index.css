@@ -21,7 +21,7 @@
   --size-icon-small: 15px;
   --size-icon-secondary: 25px;
   --size-icon-primary: clamp(1.56rem, 0.99vi + 1.33rem, 2.81rem);
-
+  --size-compass: 100px;
   /* Spacing */
   --spacing-tight: 5px;
   --spacing-small: 10px;
@@ -53,5 +53,15 @@
     background-color: white;
     font-family: "Inter", sans-serif;
     position: relative;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

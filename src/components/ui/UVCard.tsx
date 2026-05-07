@@ -1,10 +1,18 @@
+import iconList from "../../constant/iconList";
+import { Card, Gauge, CardTitle } from "../../components";
+
 type props = {
   uvValue: number[];
 };
+
 export default function UVCard({ uvValue }: props) {
   return (
     <>
-      <h1>UV_vALUE</h1>
+      <Card>
+        <CardTitle title="UV value" Icon={iconList.UV} />
+        <p>{uvValue[0]}</p>
+        <Gauge value={uvValue[0]} variant={"uv"} />
+      </Card>
       <h1>{uvValue[0]}</h1>
     </>
   );

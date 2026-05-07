@@ -25,4 +25,5 @@ export type WeatherWeekly7DaysType = {
 export type NowDataType = {
   today: string;
   time: number;
+  nextDays: string[];
 };

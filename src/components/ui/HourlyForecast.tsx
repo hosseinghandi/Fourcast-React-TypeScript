@@ -1,5 +1,8 @@
-import type { WeatherHourlyType } from "../../types/data";
+import type { WeatherHourlyType } from "../../types/extraction";
+import pickWeatherIcon from "../../utils/pickWeatherIcon";
 import prepareHourlyData from "../../utils/prepareHourlyData";
+import { CardTitle, Card } from "../../components";
+
 type props = WeatherHourlyType;
 
 export default function HourlyForecast({
@@ -14,20 +17,34 @@ export default function HourlyForecast({
     weather_code,
     time,
   });
-  const dayH: number[] = isDay_24h.map((_, i) => i);
+  const dayH: number[] = isDay_24h.map((_: any, i: number): number => i);
   return (
     <>
-      <h1>HourlyForecast</h1>
-      <div className="flex flex-row gap-4">
-        {dayH.map((h) => (
-          <div key={h} className="flex flex-col">
-            <p>{time_24h[h]}</p>
-            <p>{temp_24h[h]}</p>
-            <p>{isDay_24h[h]}</p>
-            <p>{Code_24h[h]}</p>
-          </div>
-        ))}
-      </div>
+      <Card>
+        <CardTitle title={"Hourly forecast"} underline={true} />
+        <section className="flex flex-row gap-4 overflow-x-auto no-scrollbar">
+          {dayH.map((h, i) => {
+            const { cat, path } = pickWeatherIcon(Code_24h[h], isDay_24h[h]);
+            return (
+              <div
+                key={h}
+                className="flex flex-col items-center 
+              w-fit justify-between gap-small shrink-0"
+              >
+                <p className="text-secondary">
+                  {i === 0 ? "now" : time_24h[h]}
+                </p>
+                <img
+                  src={path}
+                  alt={`Icon of ${cat} condition`}
+                  className="size-icon-primary object-contain"
+                />
+                <p className="text-primary">{temp_24h[h].toFixed(0)}</p>
+              </div>
+            );
+          })}
+        </section>
+      </Card>
     </>
   );
 }

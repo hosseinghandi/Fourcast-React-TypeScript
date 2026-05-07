@@ -3,8 +3,10 @@ export type Coord = { latitude: number; longitude: number } | null;
 export interface LocationResponse {
   lat: string;
   lon: string;
-  name?: string;
-  display_name: string;
+  address: {
+    road: string;
+    city: string;
+  };
 }
 
 export interface WeatherResponse {

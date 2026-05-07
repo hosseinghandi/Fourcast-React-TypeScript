@@ -1,28 +1,31 @@
+import solarCurve from "../../constant/solarCurve";
+import getCurrentTime from "../../utils/getCurrentTime";
+import { sunimageselector } from "../../utils/sunImagePicker";
+import CardTitle from "../shared/CardTitle";
 type props = {
   sunrise: string[];
   sunset: string[];
 };
 export default function SunPath({ sunrise, sunset }: props) {
+  const { time } = getCurrentTime();
+  const iconInx = sunimageselector(sunrise[0], sunset[0], time);
+
   return (
     <>
-      <h1>SUNPATH</h1>
+      <CardTitle title="Sunpath" underline={true} />
       <h1>{sunrise[0]}</h1>
       <h1>{sunset[0]}</h1>
+      <div
+        id="sun-marker"
+        className=" flex flex-row relative w-[200px] h-[100px]border-1"
+      >
+        {solarCurve.map(({ Icon, className }, i) => (
+          <Icon
+            style={{ color: i === iconInx ? "orange" : "" }}
+            className={className}
+          />
+        ))}
+      </div>
     </>
   );
 }
-
-// function sunRiseShine() {
-//   const sunRise = daily.sunrise[0].split("T")[1];
-//   const sunSet = daily.sunset[0].split("T")[1];
-//   sunWrapperEl.innerHTML = `
-//     <span id="sunrise">${sunRise} </span>
-//     <span id="sunshine">${sunSet}</span>
-//     `;
-
-//   sunEl.src = `./icons/sunrise-shine/${sunimageselector(
-//     sunSet,
-//     sunRise
-//   )}.png`;
-//   sunEl.ariaLabel = `Current sun position at ${exactTime} ${exactTime > 12 ? "PM" : "AM"}`
-// }
