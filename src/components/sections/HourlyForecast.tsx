@@ -1,7 +1,7 @@
 import type { WeatherHourlyType } from "../../types/extraction";
 import pickWeatherIcon from "../../utils/pickWeatherIcon";
 import prepareHourlyData from "../../utils/prepareHourlyData";
-import { CardTitle, Card } from "../../components";
+import { CardTitle, Card } from "..";
 
 type props = WeatherHourlyType;
 
@@ -22,7 +22,10 @@ export default function HourlyForecast({
     <>
       <Card>
         <CardTitle title={"Hourly forecast"} underline={true} />
-        <section className="flex flex-row gap-4 overflow-x-auto no-scrollbar">
+        <div
+          className="mt-small flex flex-row gap-medium 
+        overflow-x-auto no-scrollbar"
+        >
           {dayH.map((h, i) => {
             const { cat, path } = pickWeatherIcon(Code_24h[h], isDay_24h[h]);
             return (
@@ -39,11 +42,13 @@ export default function HourlyForecast({
                   alt={`Icon of ${cat} condition`}
                   className="size-icon-primary object-contain"
                 />
-                <p className="text-primary">{temp_24h[h].toFixed(0)}</p>
+                <p className="text-primary font-bold">
+                  {`${temp_24h[h].toFixed(0)}°`}
+                </p>
               </div>
             );
           })}
-        </section>
+        </div>
       </Card>
     </>
   );

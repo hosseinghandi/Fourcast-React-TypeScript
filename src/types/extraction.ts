@@ -1,4 +1,9 @@
-import type { WeatherResponse } from "./api";
+import type { WeatherResponse, LocationResponse } from "./api";
+
+export type LayoutProps = {
+  location: LocationResponse;
+  weather: WeatherResponse;
+};
 
 export type WeatherHourlyType = WeatherResponse["hourly"];
 

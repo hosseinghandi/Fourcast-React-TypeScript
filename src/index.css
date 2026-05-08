@@ -7,6 +7,7 @@
   --color-background: #191919;
   --color-foreground: #262626;
   --color-foreground-mate: #5d5d5d;
+  --color-border: #7c7c7c;
 
   /* General Typography */
   --text-small: 12px;
@@ -17,11 +18,12 @@
   --text-temp-current: 8rem;
   --text-temp-state: 4rem;
   --text-temp-state-desc: 2.5rem;
+  --text-compass: clamp(0.5rem, 0.2vi + 0.45rem, 0.75rem);
 
   --size-icon-small: 15px;
   --size-icon-secondary: 25px;
   --size-icon-primary: clamp(1.56rem, 0.99vi + 1.33rem, 2.81rem);
-  --size-compass: 100px;
+  --size-compass: clamp(6.25rem, 4.94vi + 5.09rem, 12.5rem);
   /* Spacing */
   --spacing-tight: 5px;
   --spacing-small: 10px;
@@ -30,6 +32,8 @@
 
   --radius-radius: 10px;
   --height-nav: 75px;
+
+  --breakpoint-sm: 485px;
 }
 
 /* =========================
@@ -38,7 +42,7 @@
 .dark {
   --color-background: #262626;
   --color-foreground: #f9f9f9;
-  --color-foreground-mate: #c8c8c8;
+  --color-foreground-mate: #5d5d5d;
 }
 
 @layer base {
@@ -48,9 +52,12 @@
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-
+    /* background-image: url("image.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; */
     color: var(--color-foreground);
-    background-color: white;
+    /* background-color: white; */
     font-family: "Inter", sans-serif;
     position: relative;
   }
@@ -63,5 +70,169 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  .banner {
+    grid-area: banner;
+  }
+
+  .hourly {
+    grid-area: hourly;
+  }
+
+  .weekly {
+    grid-area: weekly;
+  }
+
+  .uv {
+    grid-area: uv;
+  }
+
+  .wind {
+    grid-area: wind;
+  }
+
+  .humidity {
+    grid-area: humidity;
+  }
+
+  .visibility {
+    grid-area: visibility;
+  }
+
+  .pressure {
+    grid-area: pressure;
+  }
+
+  .rain {
+    grid-area: rain;
+  }
+
+  .sunpath {
+    grid-area: sunpath;
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "banner banner"
+    "hourly hourly"
+    "uv humidity"
+    "wind wind"
+    "visibility pressure"
+    "rain rain"
+    "sunpath sunpath"
+    "weekly weekly";
+}
+@media (max-width: 414px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas:
+      "banner banner"
+      "hourly hourly"
+      "uv humidity"
+      "wind wind"
+      "visibility pressure"
+      "rain rain"
+      "sunpath sunpath"
+      "weekly weekly";
+  }
+}
+
+/* =========================
+   SMALL DEVICES
+   490px → 620px
+========================= */
+
+@media (min-width: 490px) and (max-width: 620px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas:
+      "banner banner"
+      "hourly hourly"
+      "uv humidity"
+      "wind wind"
+      "visibility pressure"
+      "rain rain"
+      "sunpath sunpath"
+      "weekly weekly";
+  }
+}
+
+/* =========================
+   TABLETS
+   621px → 800px
+========================= */
+
+@media (min-width: 490px) and (max-width: 550px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-areas:
+      "banner banner banner"
+      "hourly hourly hourly"
+      "wind wind pressure"
+      "wind wind visibility "
+      "uv rain humidity"
+      "sunpath sunpath sunpath"
+      "weekly weekly weekly";
+  }
+}
+
+/* =========================
+   SMALL LAPTOPS
+   801px → 900px
+========================= */
+
+@media (min-width: 551px) and (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-areas:
+      "banner banner banner banner"
+      "uv uv pressure visibility"
+      "hourly hourly hourly hourly"
+      "wind wind sunpath sunpath"
+      "wind wind weekly weekly"
+      "wind wind rain humidity";
+  }
+}
+
+/* =========================
+   LAPTOPS
+   901px → 1349px
+========================= */
+
+@media (min-width: 901px) and (max-width: 1349px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+
+    grid-template-areas:
+      "banner banner banner banner banner"
+      "hourly hourly hourly hourly hourly"
+      "wind sunpath sunpath uv visibility"
+      "wind sunpath sunpath rain rain"
+      "wind weekly weekly humidity pressure";
+  }
+}
+
+/* =========================
+   LARGE DESKTOP
+   1350px+
+========================= */
+
+@media (min-width: 1350px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+
+    grid-template-areas:
+      "banner hourly hourly hourly hourly"
+      "banner pressure wind weekly weekly"
+      "banner humidity wind sunpath rain"
+      "banner visibility wind sunpath uv";
+
+    align-items: stretch;
   }
 }

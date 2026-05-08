@@ -26,10 +26,7 @@ export default function WeatherBanner({
 
   return (
     <>
-      <div
-        className="flex flex-col gap-small 
-      w-fit justify-center items-center mt-large"
-      >
+      <div className="flex flex-col gap-small justify-center items-center mt-large">
         <h1
           aria-label="Current temperature"
           className="text-temp-current font-bold leading-30"

@@ -1,6 +1,20 @@
+export type BGPlaceholderType =
+  | "clear"
+  | "clear_night"
+  | "cloudy"
+  | "cloudy_night"
+  | "fog"
+  | "fog_night"
+  | "rainy"
+  | "rainy_night"
+  | "snowy"
+  | "snowy_night"
+  | "thunderstorm"
+  | "thunderstorm_night";
+
 export type WeatherCondition = {
   description: string;
-  category: string;
+  category: BGPlaceholderType;
 };
 
 export type DayNightMap = {

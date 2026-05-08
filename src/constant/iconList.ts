@@ -1,18 +1,18 @@
 import { IoIosSearch } from "react-icons/io";
 import { GrLocationPin } from "react-icons/gr";
-import { TiWeatherPartlySunny } from "react-icons/ti";
+import { WiDayFog } from "react-icons/wi";
 import { PiDropSimple } from "react-icons/pi";
 import { LuGauge } from "react-icons/lu";
 import { CiUmbrella } from "react-icons/ci";
 import { MdOutlineVisibility } from "react-icons/md";
 import { IoSunnyOutline } from "react-icons/io5";
 import { FiWind } from "react-icons/fi";
-import { BsFillSunriseFill } from "react-icons/bs";
-import { BsFillSunsetFill } from "react-icons/bs";
-import { BsFillSunFill } from "react-icons/bs";
+import { GoSun } from "react-icons/go";
+import { BsSunrise } from "react-icons/bs";
+import { BsSunset } from "react-icons/bs";
 
 const iconList = {
-  Logo: TiWeatherPartlySunny,
+  Logo: WiDayFog,
   Search: IoIosSearch,
   Location: GrLocationPin,
   Humidity: PiDropSimple,
@@ -21,8 +21,8 @@ const iconList = {
   Visibility: MdOutlineVisibility,
   UV: IoSunnyOutline,
   Wind: FiWind,
-  SunShine: BsFillSunsetFill,
-  SunRise: BsFillSunriseFill,
-  Sun: BsFillSunFill,
+  SunShine: BsSunset,
+  SunRise: BsSunrise,
+  Sun: GoSun,
 };
 export default iconList;

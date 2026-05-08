@@ -1,7 +1,7 @@
 import type { WeatherWeeklyType } from "../../types/extraction";
 import getCurrentTime from "../../utils/getCurrentTime";
 import pickWeatherIcon from "../../utils/pickWeatherIcon";
-import { Card, CardTitle } from "../../components";
+import { Card, CardTitle } from "..";
 type Props = WeatherWeeklyType;
 
 export default function WeeklyForecast({
@@ -13,7 +13,10 @@ export default function WeeklyForecast({
   return (
     <Card>
       <CardTitle title={"7-day forecast"} underline={true} />
-      <section className="flex flex-row gap-4 overflow-x-auto no-scrollbar">
+      <div
+        className="mt-small flex flex-row 
+      w-full justify-between gap-small overflow-auto"
+      >
         {weekDays.map((d, i) => {
           const { cat, path } = pickWeatherIcon(weather_code[d], 1);
           return (
@@ -28,11 +31,13 @@ export default function WeeklyForecast({
                 alt={`Icon of ${cat} condition`}
                 className="size-icon-primary object-contain"
               />
-              <p className="text-primary">{temperature_2m_max[d].toFixed(0)}</p>
+              <p className="text-primary font-bold">
+                {`${temperature_2m_max[d].toFixed(0)}°`}
+              </p>
             </div>
           );
         })}
-      </section>
+      </div>
     </Card>
   );
 }

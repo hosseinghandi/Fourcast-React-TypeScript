@@ -5,16 +5,16 @@ type Props = {
 export default function WindCompass({ angleDeg }: Props) {
   return (
     <div className="relative border rounded-full overflow-hidden size-compass">
-      <span className="absolute top-1 left-1/2 -translate-x-1/2 text-[8px] text-muted-foreground">
+      <span className="absolute top-1 left-1/2 -translate-x-1/2 text-compass text-muted-foreground">
         N
       </span>
-      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[8px] text-muted-foreground">
+      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-compass text-muted-foreground">
         S
       </span>
-      <span className="absolute right-1 top-1/2 -translate-y-1/2 text-[8px] text-muted-foreground">
+      <span className="absolute right-1 top-1/2 -translate-y-1/2 text-compass text-muted-foreground">
         E
       </span>
-      <span className="absolute left-1 top-1/2 -translate-y-1/2 text-[8px] text-muted-foreground">
+      <span className="absolute left-1 top-1/2 -translate-y-1/2 text-compass text-muted-foreground">
         W
       </span>
 

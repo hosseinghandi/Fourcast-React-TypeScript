@@ -1,5 +1,5 @@
 import iconList from "../../constant/iconList";
-import { Card, Gauge, CardTitle } from "../../components";
+import { Card, Gauge, CardTitle } from "..";
 
 type props = {
   uvValue: number[];
@@ -10,10 +10,11 @@ export default function UVCard({ uvValue }: props) {
     <>
       <Card>
         <CardTitle title="UV value" Icon={iconList.UV} />
-        <p>{uvValue[0]}</p>
-        <Gauge value={uvValue[0]} variant={"uv"} />
+        <div className="flex flex-row items-baseline ">
+          <p className="w-4/11 font-bold text-primary">{uvValue[0]}</p>
+          <Gauge value={uvValue[0]} variant={"uv"} />
+        </div>
       </Card>
-      <h1>{uvValue[0]}</h1>
     </>
   );
 }
