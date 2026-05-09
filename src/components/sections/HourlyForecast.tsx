@@ -23,16 +23,21 @@ export default function HourlyForecast({
       <Card>
         <CardTitle title={"Hourly forecast"} underline={true} />
         <div
-          className="mt-small flex flex-row gap-medium 
-        overflow-x-auto no-scrollbar"
+          className=" flex flex-row
+            gap-medium flex-nowrap md:flex-wrap flex-grow
+            overflow-x-auto no-scrollbar 
+            [&>*:nth-child(n+13)]:md:border-t"
         >
+          {/*  */}
           {dayH.map((h, i) => {
             const { cat, path } = pickWeatherIcon(Code_24h[h], isDay_24h[h]);
             return (
               <div
                 key={h}
                 className="flex flex-col items-center 
-              w-fit justify-between gap-small shrink-0"
+                justify-between gap-small w-fit 
+                md:shrink md:grow 
+                md:basis-[calc(8.3333%-var(--spacing-medium))]"
               >
                 <p className="text-secondary">
                   {i === 0 ? "now" : time_24h[h]}

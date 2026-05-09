@@ -7,8 +7,8 @@ export function MainLayout({ location, weather }: LayoutProps) {
     <>
       <Header />
       <main
-        className="flex flex-col items-center min-h-screen 
-        justify-center w-full px-large gap-large mb-large"
+        className="flex flex-col items-center 
+        min-h-screen lg:min-h-[90vh] justify-end w-full p-large"
       >
         <BackgroundHandeler {...weather.current} />
         <GridLayout location={location} weather={weather} />

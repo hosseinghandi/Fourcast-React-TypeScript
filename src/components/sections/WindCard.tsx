@@ -21,10 +21,13 @@ export default function WindCard({
       <Card>
         <CardTitle title="Wind" Icon={iconList.Wind} />
         <div
-          className="flex flex-row justify-between items-center
-        "
+          className="
+          flex flex-row justify-between items-center
+          md:gap-medium min-[900px]:max-[1350px]:flex-col
+          lg:gap-large  
+          "
         >
-          <table className="w-1/2 ">
+          <table className="w-1/2 md:w-full">
             <tbody>
               {tableRow.map(({ title, value }) => (
                 <tr
@@ -40,7 +43,9 @@ export default function WindCard({
           </table>
           <div
             className="flex-1 flex justify-end 
-          min-[400px]:max-[490px]:justify-center"
+          min-[400px]:max-[490px]:justify-center
+          min-[550px]:max-[595px]:justify-center
+          "
           >
             <WindCompass angleDeg={wind_direction_10m} />
           </div>

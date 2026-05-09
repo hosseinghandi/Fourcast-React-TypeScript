@@ -1,5 +1,4 @@
 import {
-  Header,
   WeatherBanner,
   HourlyForecast,
   WeeklyForecast,
@@ -15,11 +14,7 @@ import type { LayoutProps } from "../../types/extraction";
 
 export default function GridLayout({ location, weather }: LayoutProps) {
   return (
-    <div
-      className="w-full 
-      grid gap-small 
-      details-list "
-    >
+    <div className="w-full grid gap-small details-list">
       <section className="banner">
         <WeatherBanner
           name={location.address.road ?? location.address.city}

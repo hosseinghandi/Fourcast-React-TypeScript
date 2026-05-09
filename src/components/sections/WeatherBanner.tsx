@@ -26,20 +26,24 @@ export default function WeatherBanner({
 
   return (
     <>
-      <div className="flex flex-col gap-small justify-center items-center mt-large">
+      <div
+        className="flex flex-col gap-small justify-center items-center 
+      mt-large h-full lg:justify-end max-lg:mb-large lg:pb-large"
+      >
         <h1
           aria-label="Current temperature"
-          className="text-temp-current font-bold leading-30"
+          className="text-temp-current font-bold leading-60"
         >
           {`${apparent_temperature.toFixed(0)} °`}
         </h1>
         <div
           className="
         flex flex-row justify-between w-4/5
+        md:w-1/2 lg:w-4/5
         border-b-1 border-foreground-mate"
         >
-          <p aria-label="The highest temperature of the day">{`H${temperature_2m_max[0]}`}</p>
-          <p aria-label="The lowest temperature of the day">{`L${temperature_2m_min[0]}`}</p>
+          <p aria-label="The highest temperature of the day">{`H ${temperature_2m_max[0]} °`}</p>
+          <p aria-label="The lowest temperature of the day">{`L ${temperature_2m_min[0]} °`}</p>
         </div>
         <p
           aria-label="Current weather condition"

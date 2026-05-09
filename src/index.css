@@ -15,9 +15,8 @@
   --text-body: 16px;
   --text-logo: clamp(1.13rem, 0.3vi + 1.06rem, 1.5rem);
   /* Specific Typography */
-  --text-temp-current: 8rem;
-  --text-temp-state: 4rem;
-  --text-temp-state-desc: 2.5rem;
+  --text-temp-current: clamp(8rem, 3.16vi + 7.26rem, 12rem);
+  --text-temp-state: clamp(4rem, 1.58vi + 3.63rem, 6rem);
   --text-compass: clamp(0.5rem, 0.2vi + 0.45rem, 0.75rem);
 
   --size-icon-small: 15px;
@@ -52,12 +51,7 @@
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    /* background-image: url("image.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat; */
     color: var(--color-foreground);
-    /* background-color: white; */
     font-family: "Inter", sans-serif;
     position: relative;
   }
@@ -124,52 +118,10 @@
     "sunpath sunpath"
     "weekly weekly";
 }
-@media (max-width: 414px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
 
-    grid-template-areas:
-      "banner banner"
-      "hourly hourly"
-      "uv humidity"
-      "wind wind"
-      "visibility pressure"
-      "rain rain"
-      "sunpath sunpath"
-      "weekly weekly";
-  }
-}
-
-/* =========================
-   SMALL DEVICES
-   490px → 620px
-========================= */
-
-@media (min-width: 490px) and (max-width: 620px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-
-    grid-template-areas:
-      "banner banner"
-      "hourly hourly"
-      "uv humidity"
-      "wind wind"
-      "visibility pressure"
-      "rain rain"
-      "sunpath sunpath"
-      "weekly weekly";
-  }
-}
-
-/* =========================
-   TABLETS
-   621px → 800px
-========================= */
-
-@media (min-width: 490px) and (max-width: 550px) {
+@media (min-width: 490px) and (max-width: 590px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
-
     grid-template-areas:
       "banner banner banner"
       "hourly hourly hourly"
@@ -181,58 +133,42 @@
   }
 }
 
-/* =========================
-   SMALL LAPTOPS
-   801px → 900px
-========================= */
-
-@media (min-width: 551px) and (max-width: 900px) {
+@media (min-width: 591px) and (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
-
     grid-template-areas:
       "banner banner banner banner"
-      "uv uv pressure visibility"
+      "uv uv rain rain "
       "hourly hourly hourly hourly"
       "wind wind sunpath sunpath"
-      "wind wind weekly weekly"
-      "wind wind rain humidity";
+      "weekly weekly weekly weekly"
+      "weekly weekly weekly weekly"
+      "humidity visibility pressure pressure";
   }
 }
-
-/* =========================
-   LAPTOPS
-   901px → 1349px
-========================= */
 
 @media (min-width: 901px) and (max-width: 1349px) {
   .grid {
     grid-template-columns: repeat(5, 1fr);
-
     grid-template-areas:
-      "banner banner banner banner banner"
+      "banner  banner banner banner banner"
       "hourly hourly hourly hourly hourly"
-      "wind sunpath sunpath uv visibility"
+      "wind sunpath sunpath uv uv "
       "wind sunpath sunpath rain rain"
-      "wind weekly weekly humidity pressure";
+      "wind weekly weekly humidity visibility"
+      "wind weekly weekly pressure pressure";
   }
 }
 
-/* =========================
-   LARGE DESKTOP
-   1350px+
-========================= */
-
 @media (min-width: 1350px) {
   .grid {
-    grid-template-columns: repeat(5, 1fr);
-
+    grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
-      "banner hourly hourly hourly hourly"
-      "banner pressure wind weekly weekly"
-      "banner humidity wind sunpath rain"
-      "banner visibility wind sunpath uv";
-
-    align-items: stretch;
+      "banner banner hourly hourly hourly hourly "
+      "banner banner sunpath sunpath weekly weekly "
+      "banner banner sunpath sunpath weekly weekly "
+      "banner banner visibility pressure wind wind"
+      "banner banner rain humidity wind wind"
+      "banner banner uv uv wind wind";
   }
 }
