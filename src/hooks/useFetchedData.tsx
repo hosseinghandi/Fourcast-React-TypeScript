@@ -3,10 +3,10 @@ import useWeatherData from "./useWeatherData";
 import useUserCoord from "./useUserCoord";
 import type { FetchedDataStructure } from "../types/hooks";
 
-export function useFetchedData(): FetchedDataStructure {
+export function useFetchedData(city: string | null): FetchedDataStructure {
   const coord = useUserCoord();
-
-  const location = useLocationData(coord.data);
+  const locationInput = city ?? coord.data;
+  const location = useLocationData(locationInput);
   const weather = useWeatherData(coord.data);
 
   return {

@@ -1,15 +1,20 @@
 export type Coord = { latitude: number; longitude: number } | null;
 
-export interface LocationResponse {
+export type locationRequest = {
+  coord?: Coord;
+  city: string;
+};
+
+export type LocationResponse = {
   lat: string;
   lon: string;
   address: {
     road: string;
     city: string;
   };
-}
+};
 
-export interface WeatherResponse {
+export type WeatherResponse = {
   current: {
     temperature_2m: number;
     apparent_temperature: number;
@@ -40,4 +45,4 @@ export interface WeatherResponse {
     pressure_msl_mean: number[];
     precipitation_probability_mean: number[];
   };
-}
+};

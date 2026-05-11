@@ -1,8 +1,21 @@
 import { Header, BackgroundHandeler } from "../../components";
-import type { LayoutProps } from "../../types/extraction";
-import GridLayout from "./GridLayout";
+import { useSearch } from "../../context/useSearch";
+import { ErrorScreen, Loader, GridLayout } from "../../components";
+import { useFetchedData } from "../../hooks/useFetchedData";
+import { useEffect } from "react";
+// import type { LayoutProps } from "../../types/extraction";
 
-export function MainLayout({ location, weather }: LayoutProps) {
+export function MainLayout() {
+  const { city } = useSearch();
+  const { loading, error, weather, location } = useFetchedData(city);
+
+  useEffect(() => {
+    if (loading || error) return;
+    document.documentElement.classList = weather.current.is_day ? "" : "dark";
+  }, [loading, error, weather]);
+
+  if (loading) return <Loader />;
+  if (error) return <ErrorScreen message={error} />;
   return (
     <>
       <Header />

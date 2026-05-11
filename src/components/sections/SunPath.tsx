@@ -12,7 +12,6 @@ export default function SunPath({ sunrise, sunset }: props) {
     Number(time.split("T")[1].slice(0, 2));
   const sunSet_H = takeHourTime(sunset[0]);
   const sunRise_H = takeHourTime(sunrise[0]);
-  console.log(sunRise_H);
   const iconInx = sunimageselector(sunSet_H, sunRise_H, time);
   return (
     <>

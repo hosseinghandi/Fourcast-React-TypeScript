@@ -1,3 +1,4 @@
+import CityInput from "../ui/CityInput";
 import iconList from "../../constant/iconList";
 export default function Header() {
   return (
@@ -11,22 +12,7 @@ export default function Header() {
               <iconList.Logo aria-hidden="true" className="size-icon-primary" />
             </div>
           </div>
-          <div
-            className="flex items-center rounded-radius 
-            px-small py-tight border border-foreground-mate 
-            backdrop-blur-md w-full sm:max-w-[300px] 
-            hover:backdrop-blur-sm"
-          >
-            <iconList.Search
-              aria-hidden="true"
-              className="size-icon-secondary dark:fill-foreground"
-            />
-            <input
-              className="ml-small text-body outline-none"
-              type="text"
-              placeholder="Search a city"
-            />
-          </div>
+          <CityInput />
         </div>
       </nav>
     </>

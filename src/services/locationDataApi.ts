@@ -1,10 +1,15 @@
-import type { Coord, LocationResponse } from "../types/fetching";
+import type { Coord, LocationResponse } from "../types/api";
 
-const locationDataApi = async (coord: Coord): Promise<LocationResponse> => {
-  // To get rid of errors becasue coord should be
-  // avaliable to run this function as we safly guarded by enable depend on coord
-  if (!coord) throw new Error("Missing coord");
-  const endpoint = `reverse?format=jsonv2&lat=${coord.latitude}&lon=${coord.longitude}`;
+const locationDataApi = async (
+  loctionBy: Coord | string,
+): Promise<LocationResponse> => {
+  if (!loctionBy) throw new Error("Either city or coordination is required!");
+
+  const endpoint: string =
+    typeof loctionBy === "string"
+      ? `search?format=json&q=${loctionBy}&limit=1`
+      : `reverse?format=jsonv2&lat=${loctionBy?.latitude}&lon=${loctionBy?.longitude}`;
+
   const res = await fetch(`https://nominatim.openstreetmap.org/${endpoint}`);
   if (!res.ok) throw new Error("Failed to fetch location data");
   return res.json();
