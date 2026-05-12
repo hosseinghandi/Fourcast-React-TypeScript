@@ -1,14 +1,14 @@
 import Card from "../shared/Card";
 
 type Props = {
-  message?: Error | null;
+  message?: string;
 };
 
 export default function ErrorScreen({ message }: Props) {
   return (
     <>
       <Card>
-        <h1>{message?.message}</h1>
+        <h1>{message}</h1>
       </Card>
     </>
   );

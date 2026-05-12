@@ -3,8 +3,8 @@ import type { Coord } from "../types/api";
 import type { FetchingStructure } from "../types/hooks";
 
 function useUserCoord(): FetchingStructure<Coord> {
-  const [data, setData] = useState<Coord | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<Coord>(null);
+  const [isLoading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -22,6 +22,6 @@ function useUserCoord(): FetchingStructure<Coord> {
       },
     );
   }, []);
-  return { data, loading, error };
+  return { data, isLoading, error };
 }
 export default useUserCoord;

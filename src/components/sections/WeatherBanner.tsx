@@ -4,14 +4,12 @@ import { getWeatherCode } from "../../utils/getWeatherCode";
 import iconList from "../../constant/iconList";
 
 type WeatherBannerProps = {
-  name:
-    | LocationResponse["address"]["city"]
-    | LocationResponse["address"]["road"];
+  location: LocationResponse;
   weatherData: WeatherResponse;
 };
 
 export default function WeatherBanner({
-  name,
+  location,
   weatherData,
 }: WeatherBannerProps) {
   // data preparation
@@ -23,6 +21,12 @@ export default function WeatherBanner({
     weather_code,
     is_day ? 1 : 0,
   );
+
+  const displayName =
+    location?.name ??
+    location?.address?.city ??
+    location?.address?.town ??
+    "Unknown location";
 
   return (
     <>
@@ -57,7 +61,7 @@ export default function WeatherBanner({
             aria-hidden="true"
             className="size-icon-small dark:text-foreground"
           />
-          <p aria-label="Current location">{name}</p>
+          <p aria-label="Current location">{displayName}</p>
         </div>
       </div>
     </>

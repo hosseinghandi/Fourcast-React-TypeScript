@@ -1,16 +1,15 @@
 export type Coord = { latitude: number; longitude: number } | null;
 
-export type locationRequest = {
-  coord?: Coord;
-  city: string;
-};
+export type LocationRequest = { coord: Coord; city?: string };
 
 export type LocationResponse = {
   lat: string;
   lon: string;
-  address: {
-    road: string;
-    city: string;
+  name?: string;
+  address?: {
+    road?: string;
+    city?: string;
+    town?: string;
   };
 };
 

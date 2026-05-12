@@ -16,10 +16,7 @@ export default function GridLayout({ location, weather }: LayoutProps) {
   return (
     <div className="w-full grid gap-small details-list">
       <section className="banner">
-        <WeatherBanner
-          name={location.address.road ?? location.address.city}
-          weatherData={weather}
-        />
+        <WeatherBanner location={location} weatherData={weather} />
       </section>
       <section className="hourly">
         <HourlyForecast {...weather.hourly} />

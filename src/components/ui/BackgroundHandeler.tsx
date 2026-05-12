@@ -8,6 +8,7 @@ type Props = {
 };
 export default function BackgroundHandeler({ weather_code, is_day }: Props) {
   const { category } = getWeatherCode(weather_code, is_day ? 1 : 0);
+  console.log(weather_code, is_day);
   const backgroundColor = bgPlaceholder[category];
   const [loaded, setLoaded] = useState(false);
 

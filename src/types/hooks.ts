@@ -1,14 +1,16 @@
 import type { WeatherResponse, LocationResponse, Coord } from "./api";
-export interface FetchingStructure<T> {
-  data: T | null;
-  loading: boolean;
+// This would be used for geoLocation
+// to keep the structure coherent with React query responde
+export type FetchingStructure<T> = {
+  data: T;
+  isLoading: boolean;
   error: Error | null;
-}
+};
 
-export interface FetchedDataStructure {
+export type FetchedDataStructure = {
   coordinate: Coord;
-  location: LocationResponse;
-  weather: WeatherResponse;
+  location: LocationResponse | undefined;
+  weather: WeatherResponse | undefined;
   loading: boolean;
   error: Error | null;
-}
+};

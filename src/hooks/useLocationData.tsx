@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-
-import type { Coord } from "../types/api";
+import type { LocationRequest } from "../types/api";
 import locationDataApi from "../services/locationDataApi";
 
-export default function useLocationData(loctionBy: Coord | string) {
+export default function useLocationData({ coord, city }: LocationRequest) {
   return useQuery({
-    queryKey: ["locationData", loctionBy],
-    queryFn: () => locationDataApi(loctionBy),
-    enabled: !!loctionBy,
+    queryKey: ["locationData", coord, city],
+    queryFn: () => locationDataApi({ coord, city }),
+    enabled: !!coord || !!city,
   });
 }

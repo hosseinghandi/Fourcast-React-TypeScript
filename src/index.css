@@ -35,9 +35,6 @@
   --breakpoint-sm: 485px;
 }
 
-/* =========================
-   DARK MODE TOKENS
-========================= */
 .dark {
   --color-background: #262626;
   --color-foreground: #f9f9f9;
