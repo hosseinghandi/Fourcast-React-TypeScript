@@ -4,21 +4,20 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-background: #191919;
   --color-foreground: #262626;
   --color-foreground-mate: #5d5d5d;
-  --color-border: #7c7c7c;
 
   /* General Typography */
   --text-small: 12px;
   --text-secondary: 14px;
   --text-body: 16px;
+  --text-error: clamp(1.13rem, 0.3vi + 1.06rem, 1.5rem);
   --text-logo: clamp(1.13rem, 0.3vi + 1.06rem, 1.5rem);
   /* Specific Typography */
-  --text-temp-current: clamp(8rem, 3.16vi + 7.26rem, 12rem);
-  --text-temp-state: clamp(4rem, 1.58vi + 3.63rem, 6rem);
-  --text-compass: clamp(0.5rem, 0.2vi + 0.45rem, 0.75rem);
 
+  --text-temp-current: clamp(8rem, 3.16vi + 7.26rem, 12rem);
+  --text-temp-state: clamp(2.5rem, 1.48vi + 2.15rem, 4.38rem);
+  --text-compass: clamp(0.5rem, 0.2vi + 0.45rem, 0.75rem);
   --size-icon-small: 15px;
   --size-icon-secondary: 25px;
   --size-icon-primary: clamp(1.56rem, 0.99vi + 1.33rem, 2.81rem);
@@ -36,9 +35,8 @@
 }
 
 .dark {
-  --color-background: #262626;
-  --color-foreground: #f9f9f9;
-  --color-foreground-mate: #5d5d5d;
+  --color-foreground: #efefef;
+  --color-foreground-mate: #aeaeae;
 }
 
 @layer base {

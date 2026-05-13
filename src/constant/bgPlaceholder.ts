@@ -1,21 +1,21 @@
 import type { BGPlaceholderType } from "../types/weatherCode";
 
 export const bgPlaceholder: Record<BGPlaceholderType, string> = {
-  clear: "#4FC3F7",
-  clear_night: "#1E3A5F",
+  clear: "#5B9EC9",
+  clear_night: "#19100c",
 
-  cloudy: "#90A4AE",
-  cloudy_night: "#455A64",
+  cloudy: "#6B7F82",
+  cloudy_night: "#080D0A",
 
-  fog: "#B0BEC5",
-  fog_night: "#546E7A",
+  fog: "#8B9EA8",
+  fog_night: "#779b87",
 
-  rainy: "#1565C0",
-  rainy_night: "#0D1B2A",
+  rainy: "#2D4A2D",
+  rainy_night: "#1A1520",
 
-  snowy: "#E3F2FD",
-  snowy_night: "#5C6B73",
+  snowy: "#C8CDD0",
+  snowy_night: "#0A0A0A",
 
-  thunderstorm: "#512DA8",
-  thunderstorm_night: "#1A237E",
+  thunderstorm: "#2A2D3A",
+  thunderstorm_night: "#0d0d0e",
 };

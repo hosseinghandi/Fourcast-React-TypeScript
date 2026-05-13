@@ -8,14 +8,11 @@ export default function RainCard({ rainValue }: props) {
     <Card>
       <CardTitle title="Rain chance" Icon={iconList.Rain} />
       <div className="flex flex-row items-baseline ">
-        <h3
-          aria-label="Current rain chance"
-          className="w-2/12 font-bold text-primaryss"
-        >
+        <p className="w-2/12 font-bold text-primarys">
           {`${rainValue[0]}`}
           <span aria-hidden="true">%</span>
-          <span className="sr-only">Percentage change of rain</span>
-        </h3>
+          <span className="sr-only">percent rain chance</span>
+        </p>
         <Gauge value={rainValue[0]} variant={"rain"} />
       </div>
     </Card>

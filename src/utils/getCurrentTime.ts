@@ -1,15 +1,23 @@
 import type { NowDataType } from "../types/extraction";
 
-const days: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const Days: string[] = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 export default function getCurrentTime(): NowDataType {
-  var now = new Date();
-  const today = days[now.getDay() - 1];
+  const now = new Date();
+  const dayIndex = now.getDay();
+  const today = Days[dayIndex];
   const nextDays = [
-    ...days.slice(now.getDay()),
-    ...days.slice(0, now.getDay()),
+    ...Days.slice(dayIndex + 1),
+    ...Days.slice(0, dayIndex + 1),
   ];
-
   const time = now.getHours();
-  return { today: today, time: time, nextDays: nextDays };
+  return { today, time, nextDays };
 }

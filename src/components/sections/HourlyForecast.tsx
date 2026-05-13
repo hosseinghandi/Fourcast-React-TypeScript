@@ -11,49 +11,66 @@ export default function HourlyForecast({
   weather_code,
   time,
 }: props) {
-  const { isDay_24h, temp_24h, Code_24h, time_24h } = prepareHourlyData({
+  const { isDay_24h, temp_24h, code_24h, time_24h } = prepareHourlyData({
     is_day,
     temperature_2m,
     weather_code,
     time,
   });
+
   const dayH: number[] = isDay_24h.map((_: any, i: number): number => i);
   return (
     <>
       <Card>
         <CardTitle title={"Hourly forecast"} underline={true} />
-        <div
+        <ul
+          aria-label="24 hours weather forecast"
           className=" flex flex-row
             gap-medium flex-nowrap md:flex-wrap flex-grow
             overflow-x-auto no-scrollbar 
             [&>*:nth-child(n+13)]:md:border-t"
         >
-          {/*  */}
           {dayH.map((h, i) => {
-            const { cat, path } = pickWeatherIcon(Code_24h[h], isDay_24h[h]);
+            const { cat, path } = pickWeatherIcon(
+              code_24h[h],
+              isDay_24h[h] ? 1 : 0,
+            );
             return (
-              <div
+              <li
                 key={h}
                 className="flex flex-col items-center 
                 justify-between gap-small w-fit 
                 md:shrink md:grow 
                 md:basis-[calc(8.3333%-var(--spacing-medium))]"
               >
-                <p className="text-secondary">
-                  {i === 0 ? "now" : time_24h[h]}
+                <p className="text-secondary" aria-hidden="true">
+                  {i === 0 ? "Now" : time_24h[h]}
                 </p>
+                <span className="sr-only">
+                  {i === 0
+                    ? "Now"
+                    : `${
+                        time_24h[h] >= 12
+                          ? `${time_24h[h] - 12 || 12} PM`
+                          : `${time_24h[h]} AM`
+                      }`}
+                </span>
                 <img
+                  aria-hidden="true"
                   src={path}
-                  alt={`Icon of ${cat} condition`}
+                  alt=""
                   className="size-icon-primary object-contain"
                 />
+                <span className="sr-only">{cat}</span>
                 <p className="text-primary font-bold">
-                  {`${temp_24h[h].toFixed(0)}°`}
+                  {`${temp_24h[h].toFixed(0)}`}
+                  <span aria-hidden="true">°</span>
+                  <span className="sr-only">degrees</span>
                 </p>
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </Card>
     </>
   );

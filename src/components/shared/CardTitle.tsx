@@ -11,9 +11,8 @@ export default function CardTitle({ title, Icon, underline }: Props) {
       {!!Icon && <Icon aria-hidden="true" />}
       <h2
         style={{ textDecoration: underline ? "underline" : "" }}
-        id="hourly_forcast"
+        id={`${title}`}
         className="text-secondary "
-        aria-label={`${title}`}
       >
         {title}
       </h2>

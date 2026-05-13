@@ -1,6 +1,6 @@
 export type Coord = { latitude: number; longitude: number } | null;
 
-export type LocationRequest = { coord: Coord; city?: string };
+export type LocationRequest = { coord: Coord; city?: string | undefined };
 
 export type LocationResponse = {
   lat: string;
@@ -20,6 +20,7 @@ export type WeatherResponse = {
     relative_humidity_2m: number;
     weather_code: number;
     is_day: number;
+    time: string;
     wind_speed_10m: number;
     wind_gusts_10m: number;
     wind_direction_10m: number;

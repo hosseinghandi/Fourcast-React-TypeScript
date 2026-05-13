@@ -11,15 +11,15 @@ export default function Header() {
           className="flex flex-row gap-large gap-tight 
         sm:gap-medium items-center flex-wrap"
         >
-          <div
+          <button
+            type="button"
+            aria-label="Rest to Your current position"
             onClick={() => setCity(undefined)}
             className="flex flex-row gap-tight items-center hover:cursor-pointer"
           >
             <span className="text-logo">FourCast</span>
-            <div className="size-icon-primary">
-              <iconList.Logo aria-hidden="true" className="size-icon-primary" />
-            </div>
-          </div>
+            <iconList.Logo aria-hidden="true" className="size-icon-primary" />
+          </button>
           <CityInput />
         </div>
       </nav>

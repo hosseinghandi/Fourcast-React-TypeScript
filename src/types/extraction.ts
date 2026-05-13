@@ -17,7 +17,7 @@ export type WeatherHourly24hType = {
   isDay_24h: number[];
   temp_24h: number[];
   code_24h: number[];
-  time_24h: string[];
+  time_24h: number[];
 };
 
 // 7 day slice after processing
@@ -31,4 +31,10 @@ export type NowDataType = {
   today: string;
   time: number;
   nextDays: string[];
+};
+
+export type WindData = {
+  wind_speed_10m: number;
+  wind_gusts_10m: number;
+  wind_direction_10m: number;
 };

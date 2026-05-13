@@ -9,22 +9,23 @@ export default function CityInput() {
   }
   const { setCity } = useSearch();
   return (
-    <form onSubmit={handleSubmit}>
+    <form role="search" onSubmit={handleSubmit}>
       <div
         className="flex items-center rounded-radius 
-            px-small py-tight border border-foreground-mate 
+            px-small py-tight border 
             backdrop-blur-md w-full sm:max-w-[300px] 
             hover:backdrop-blur-sm"
       >
-        <iconList.Search
-          aria-hidden="true"
-          className="size-icon-secondary dark:fill-foreground"
-        />
+        <iconList.Search aria-hidden="true" className="size-icon-secondary" />
         <input
+          aria-label="Search a city or location"
           name="search"
-          minLength={2}
+          pattern="^[A-Za-zÀ-ÿ\s'-]+$"
+          required
+          minLength={4}
           maxLength={20}
-          className="ml-small text-body outline-none"
+          className="ml-small text-body outline-none 
+          placeholder:text-foreground"
           type="text"
           placeholder="Search a city or location"
         />

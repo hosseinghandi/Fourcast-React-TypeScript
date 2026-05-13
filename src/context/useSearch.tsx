@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from "react";
 
 type ContextType = {
-  city: string | null;
-  setCity: React.Dispatch<React.SetStateAction<string | null>>;
+  city: string | undefined;
+  setCity: React.Dispatch<React.SetStateAction<string | undefined>>;
 };
 
 type props = {
@@ -12,7 +12,7 @@ type props = {
 const SearchContext = createContext<ContextType | null>(null);
 
 export const SearchProvider = ({ children }: props) => {
-  const [city, setCity] = useState<string | null>(null);
+  const [city, setCity] = useState<string | undefined>(undefined);
   return (
     <SearchContext.Provider value={{ city, setCity }}>
       {children}

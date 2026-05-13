@@ -12,7 +12,7 @@ export function useFetchedData(city: string | undefined): FetchedDataStructure {
   const exactCoord: Coord = city
     ? {
         latitude: Number(location.data?.lat),
-        longitude: Number(location.data?.lat),
+        longitude: Number(location.data?.lon),
       }
     : coord.data;
   const weather = useWeatherData(exactCoord);
@@ -22,9 +22,10 @@ export function useFetchedData(city: string | undefined): FetchedDataStructure {
     location: location.data,
     weather: weather.data,
     loading: coord.isLoading || location.isLoading || weather.isLoading,
-    error:
-      coord.error ||
-      (location.error as Error | null) ||
-      (weather.error as Error | null),
+    error: {
+      coord: coord.error,
+      location: location.error as Error | null,
+      weather: weather.error as Error | null,
+    },
   };
 }

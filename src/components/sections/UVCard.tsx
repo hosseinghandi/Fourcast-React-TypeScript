@@ -10,14 +10,14 @@ export default function UVCard({ uvValue }: props) {
     <>
       <Card>
         <CardTitle title="UV value" Icon={iconList.UV} />
-        <div className="flex flex-row items-baseline ">
-          <p className="w-4/11 font-bold text-primary">{uvValue[0]}</p>
+        <div className="flex flex-row items-baseline">
+          <p className="w-4/11 font-bold text-primary" aria-hidden="true">
+            {uvValue[0]}
+          </p>
+          <span className="sr-only">UV index: {uvValue[0]}</span>
           <Gauge value={uvValue[0]} variant={"uv"} />
         </div>
       </Card>
     </>
   );
 }
-
-// uvIndexEl.innerHTML = `<strong class="detail-value">${daily.uv_index_max[0]}</strong>`;
-// uvIndicator.style.left = `${daily.uv_index_max[0] * 10}%`;

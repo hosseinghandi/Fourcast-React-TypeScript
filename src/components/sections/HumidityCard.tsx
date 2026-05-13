@@ -8,10 +8,10 @@ export default function HumidityCard({ humidityValue }: props) {
   return (
     <Card>
       <CardTitle title="Humidity" Icon={iconList.Humidity} />
-      <p className="font-bold text-primary">
-        {`${humidityValue[0]}`}
+      <p>
+        {humidityValue[0]}
         <span aria-hidden="true">%</span>
-        <span className="sr-only">Percentage of humidity of the air</span>
+        <span className="sr-only">percent himidity</span>
       </p>
     </Card>
   );

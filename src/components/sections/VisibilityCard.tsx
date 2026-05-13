@@ -10,7 +10,7 @@ export default function VisibilityCard({ visibilityValue }: props) {
       <p className="font-bold text-primary">
         {`${(visibilityValue[0] / 1000).toFixed(0)}`}
         <span aria-hidden="true"> Km</span>
-        <span className="sr-only">Kilometres</span>
+        <span className="sr-only">Kilometres visibility</span>
       </p>
     </Card>
   );

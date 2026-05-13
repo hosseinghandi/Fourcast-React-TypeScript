@@ -10,6 +10,7 @@ import { FiWind } from "react-icons/fi";
 import { GoSun } from "react-icons/go";
 import { BsSunrise } from "react-icons/bs";
 import { BsSunset } from "react-icons/bs";
+import { BiSolidMessageRoundedError } from "react-icons/bi";
 
 const iconList = {
   Logo: WiDayFog,
@@ -24,5 +25,6 @@ const iconList = {
   SunShine: BsSunset,
   SunRise: BsSunrise,
   Sun: GoSun,
+  Error: BiSolidMessageRoundedError,
 };
 export default iconList;

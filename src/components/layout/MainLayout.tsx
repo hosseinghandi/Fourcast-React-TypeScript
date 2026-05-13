@@ -7,7 +7,10 @@ import { useEffect } from "react";
 export function MainLayout() {
   const { city } = useSearch();
   const { loading, error, weather, location } = useFetchedData(city);
-  console.log(weather);
+
+  const isNotFound = error.location?.message;
+  const isDataError = error.coord?.message || error.weather?.message;
+  console.log(isNotFound);
   useEffect(() => {
     if (loading || error) return;
     document.documentElement.className =
@@ -15,20 +18,26 @@ export function MainLayout() {
   }, [loading, error, weather]);
 
   if (loading) return <Loader />;
-  if (error?.message) return <ErrorScreen message={error.message} />;
+  if (isDataError) return <ErrorScreen error={error} />;
   if (!weather || !location) return <Loader />;
+
   return (
     <>
       <Header />
       <main
+        aria-label="Weather information"
         className="flex flex-col items-center dark:text-foreground dark:border-foreground-mate 
         min-h-screen lg:min-h-[90vh] justify-end w-full p-large"
       >
+        {isNotFound && <p>{error.location?.message}</p>}
+        <span
+          className="sr-only"
+          aria-live="polite"
+        >{`${weather?.current.is_day === 1 ? "Daytime theme" : "Nighttime theme"}`}</span>
+
         <BackgroundHandeler {...weather.current} />
         <GridLayout location={location} weather={weather} />
       </main>
-
-      <footer></footer>
     </>
   );
 }

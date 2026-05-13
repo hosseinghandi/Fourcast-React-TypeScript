@@ -15,12 +15,9 @@ export default function WeatherBanner({
   // data preparation
 
   const { current, daily } = weatherData;
-  const { apparent_temperature, weather_code, is_day } = current;
+  const { apparent_temperature, weather_code } = current;
   const { temperature_2m_min, temperature_2m_max } = daily;
-  const weatherCondiation: WeatherCondition = getWeatherCode(
-    weather_code,
-    is_day ? 1 : 0,
-  );
+  const weatherCondiation: WeatherCondition = getWeatherCode(weather_code, 1);
 
   const displayName =
     location?.name ??
@@ -34,11 +31,10 @@ export default function WeatherBanner({
         className="flex flex-col gap-small justify-center items-center 
       mt-large h-full lg:justify-end max-lg:mb-large lg:pb-large"
       >
-        <h1
-          aria-label="Current temperature"
-          className="text-temp-current font-bold leading-60"
-        >
-          {`${apparent_temperature.toFixed(0)} °`}
+        <h1 className="text-temp-current font-bold leading-60">
+          {`${apparent_temperature.toFixed(0)}`}
+          <span aria-hidden="true">°</span>
+          <span className="sr-only">degrees</span>
         </h1>
         <div
           className="
@@ -46,22 +42,31 @@ export default function WeatherBanner({
         md:w-1/2 lg:w-4/5
         border-b-1 border-foreground-mate"
         >
-          <p aria-label="The highest temperature of the day">{`H ${temperature_2m_max[0]} °`}</p>
-          <p aria-label="The lowest temperature of the day">{`L ${temperature_2m_min[0]} °`}</p>
+          <p>
+            <span className="sr-only">High temperature</span>
+            <span aria-hidden="true">H</span>
+            {`${temperature_2m_max[0]}`}
+            <span aria-hidden="true">°</span>
+            <span className="sr-only">degrees</span>
+          </p>
+
+          <p>
+            <span className="sr-only">Low temperature</span>
+            <span aria-hidden="true">L</span>
+            {` ${temperature_2m_min[0]}`}
+            <span aria-hidden="true">°</span>
+            <span className="sr-only">degrees</span>
+          </p>
         </div>
-        <p
-          aria-label="Current weather condition"
-          className="text-temp-state font-bold"
-        >
+        <p className="text-temp-state font-bold">
           {weatherCondiation.category}
         </p>
-        {/* <p className="text-temp-state-desc">{weatherCondiation.description}</p> */}
         <div className="flex flex-row gap-tight items-center">
           <iconList.Location
             aria-hidden="true"
             className="size-icon-small dark:text-foreground"
           />
-          <p aria-label="Current location">{displayName}</p>
+          <p>{displayName}</p>
         </div>
       </div>
     </>

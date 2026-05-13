@@ -8,7 +8,8 @@ export default function Card({ children, className = "", ...rest }: Props) {
   return (
     <div
       {...rest}
-      className="p-small border-1 w-full h-full rounded-radius dark:border-foreground-mate
+      className="
+      p-small border-1 w-full h-full rounded-radius dark:border-foreground-mate
       backdrop-blur-md"
     >
       {children}

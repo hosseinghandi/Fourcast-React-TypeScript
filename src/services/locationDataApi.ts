@@ -14,6 +14,8 @@ const locationDataApi = async ({
   const res = await fetch(`https://nominatim.openstreetmap.org/${endpoint}`);
   if (!res.ok) throw new Error("Failed to fetch location data");
   const data = await res.json();
-  return city ? data[0] : data;
+  const locationData = city ? data[0] : data;
+  if (!locationData) throw new Error(`No result found for '${city}'`);
+  return locationData;
 };
 export default locationDataApi;
