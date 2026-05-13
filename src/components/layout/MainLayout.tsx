@@ -7,15 +7,21 @@ import { useEffect } from "react";
 export function MainLayout() {
   const { city } = useSearch();
   const { loading, error, weather, location } = useFetchedData(city);
-
   const isNotFound = error.location?.message;
   const isDataError = error.coord?.message || error.weather?.message;
-  console.log(isNotFound);
+
+  const searchFailed =
+    !!city && location?.name?.toLowerCase() !== city?.toLowerCase();
+
+  console.log(searchFailed);
+
   useEffect(() => {
     if (loading || error) return;
     document.documentElement.className =
       weather?.current.is_day === 1 ? "" : "dark";
   }, [loading, error, weather]);
+
+  console.log(isNotFound);
 
   if (loading) return <Loader />;
   if (isDataError) return <ErrorScreen error={error} />;
@@ -23,13 +29,16 @@ export function MainLayout() {
 
   return (
     <>
-      <Header />
+      <Header
+        notFoundMessage={
+          searchFailed ? `The location '${city}' is not found` : ""
+        }
+      />
       <main
         aria-label="Weather information"
         className="flex flex-col items-center dark:text-foreground dark:border-foreground-mate 
         min-h-screen lg:min-h-[90vh] justify-end w-full p-large"
       >
-        {isNotFound && <p>{error.location?.message}</p>}
         <span
           className="sr-only"
           aria-live="polite"

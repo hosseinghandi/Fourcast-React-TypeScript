@@ -6,6 +6,9 @@ export default function useLocationData({ coord, city }: LocationRequest) {
   return useQuery({
     queryKey: ["locationData", coord, city],
     queryFn: () => locationDataApi({ coord, city }),
-    enabled: !!coord || !!city,
+    enabled: !!city || !!coord,
+    staleTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60 * 24,
+    retry: 1,
   });
 }

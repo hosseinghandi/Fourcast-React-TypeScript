@@ -1,8 +1,23 @@
 import CityInput from "../ui/CityInput";
 import iconList from "../../constant/iconList";
 import { useSearch } from "../../context/useSearch";
-export default function Header() {
+import { useEffect, useState } from "react";
+
+type Props = { notFoundMessage?: string };
+export default function Header({ notFoundMessage }: Props) {
+  const [showError, setShowError] = useState(false);
+
   const { setCity } = useSearch();
+
+  useEffect(() => {
+    if (!notFoundMessage) return;
+    setShowError(true);
+    const error = setTimeout(() => {
+      setShowError(false);
+    }, 3000);
+    return () => clearTimeout(error);
+  }, [notFoundMessage]);
+
   return (
     <>
       <nav aria-label="Main navigation" className="h-nav w-full p-medium ">
@@ -22,6 +37,17 @@ export default function Header() {
           </button>
           <CityInput />
         </div>
+        {
+          <div
+            style={{ top: showError ? "30px" : "-100px" }}
+            className="fixed left-1/2 -translate-x-1/2 tranform-top duration-500 ease
+            border-1 rounded-radius p-medium backdrop-blur-md "
+          >
+            <p className="text-primary font-bold text-red-900">
+              {notFoundMessage}
+            </p>
+          </div>
+        }
       </nav>
     </>
   );
