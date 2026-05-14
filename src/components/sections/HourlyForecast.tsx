@@ -28,7 +28,7 @@ export default function HourlyForecast({
           className=" flex flex-row
             gap-medium flex-nowrap md:flex-wrap flex-grow
             overflow-x-auto no-scrollbar 
-            [&>*:nth-child(n+13)]:md:border-t"
+            [&>*:nth-child(n+13)]:md:border-t [&>*:nth-child(n+13)]:md:border-foreground-mate"
         >
           {dayH.map((h, i) => {
             const { cat, path } = pickWeatherIcon(

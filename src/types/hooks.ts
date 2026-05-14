@@ -12,6 +12,7 @@ export type FetchedDataStructure = {
   location: LocationResponse | undefined;
   weather: WeatherResponse | undefined;
   loading: boolean;
+  isLocationPlaceholder: boolean;
   error: {
     coord: Error | null;
     location: Error | null;

@@ -7,14 +7,16 @@ type Props = {
   is_day: number;
 };
 export default function BackgroundHandeler({ weather_code, is_day }: Props) {
-  console.log(is_day);
+  console.log(weather_code, is_day);
   const { category } = getWeatherCode(weather_code, !!is_day ? 1 : 0);
+  console.log(category);
   const backgroundColor = bgPlaceholder[category];
   const [loaded, setLoaded] = useState(false);
 
   return (
     <>
       <video
+        key={category}
         autoPlay
         muted
         loop
@@ -23,7 +25,7 @@ export default function BackgroundHandeler({ weather_code, is_day }: Props) {
         onLoadedData={() => setLoaded(true)}
         aria-hidden="true"
         className="fixed inset-0 h-full w-full object-cover 
-        -z-10 opacity-80 pointer-events-none scale-110"
+        -z-10 opacity-50 pointer-events-none scale-110"
       >
         <source src={`videos/${category}.mp4`} type="video/mp4" />
       </video>

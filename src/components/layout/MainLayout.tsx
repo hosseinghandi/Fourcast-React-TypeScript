@@ -2,30 +2,28 @@ import { Header, BackgroundHandeler } from "../../components";
 import { useSearch } from "../../context/useSearch";
 import { ErrorScreen, Loader, GridLayout } from "../../components";
 import { useFetchedData } from "../../hooks/useFetchedData";
-import { useEffect } from "react";
-
+import { useTheme } from "../../hooks/useTheme";
 export function MainLayout() {
   const { city } = useSearch();
-  const { loading, error, weather, location } = useFetchedData(city);
-  const isNotFound = error.location?.message;
-  const isDataError = error.coord?.message || error.weather?.message;
+  const { loading, error, weather, location, isLocationPlaceholder } =
+    useFetchedData(city);
+  // check if any error has occurred during getting data
+  const isErrorOccurred = error.coord || error.location || error.weather;
 
-  const searchFailed =
-    !!city && location?.name?.toLowerCase() !== city?.toLowerCase();
-
-  console.log(searchFailed);
-
-  useEffect(() => {
-    if (loading || error) return;
-    document.documentElement.className =
-      weather?.current.is_day === 1 ? "" : "dark";
-  }, [loading, error, weather]);
-
-  console.log(isNotFound);
+  // change the theme color to white if
+  // it is night time since background gets darker
+  useTheme(weather?.current?.is_day ?? 1, loading, !!isErrorOccurred);
 
   if (loading) return <Loader />;
-  if (isDataError) return <ErrorScreen error={error} />;
+  if (isErrorOccurred) return <ErrorScreen error={error} />;
   if (!weather || !location) return <Loader />;
+
+  // see if the search city is equle to
+  // given name location otherwise fetching by name went wrong
+  const searchFailed =
+    !isLocationPlaceholder &&
+    !!city &&
+    location?.name?.toLowerCase() !== city.toLowerCase();
 
   return (
     <>
@@ -37,12 +35,11 @@ export function MainLayout() {
       <main
         aria-label="Weather information"
         className="flex flex-col items-center dark:text-foreground dark:border-foreground-mate 
-        min-h-screen lg:min-h-[90vh] justify-end w-full p-large"
+        min-h-screen lg:min-h-[calc(100vh-7rem)] justify-end w-full px-large"
       >
-        <span
-          className="sr-only"
-          aria-live="polite"
-        >{`${weather?.current.is_day === 1 ? "Daytime theme" : "Nighttime theme"}`}</span>
+        <span className="sr-only" aria-live="polite">
+          {weather.current.is_day === 1 ? "Daytime theme" : "Nighttime theme"}
+        </span>
 
         <BackgroundHandeler {...weather.current} />
         <GridLayout location={location} weather={weather} />

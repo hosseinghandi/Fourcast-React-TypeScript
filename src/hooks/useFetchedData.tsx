@@ -9,19 +9,14 @@ export function useFetchedData(city: string | undefined): FetchedDataStructure {
   const coord = useUserCoord();
   const location = useLocationData({ coord: coord.data, city: city });
 
-  // FINAL WEATHER COORDS
   const finalCoord: Coord | undefined = useMemo(() => {
-    // user searched city
     if (city) {
       if (!location.data) return undefined;
-
       return {
         latitude: Number(location.data.lat),
         longitude: Number(location.data.lon),
       };
     }
-
-    // otherwise use user geolocation directly
     return coord.data;
   }, [city, location.data, coord.data]);
 
@@ -31,13 +26,11 @@ export function useFetchedData(city: string | undefined): FetchedDataStructure {
     coordinate: coord.data,
     location: location.data,
     weather: weather.data,
-    loading:
-      coord.isLoading ||
-      (city ? location.isLoading : false) ||
-      weather.isLoading,
+    isLocationPlaceholder: location.isPlaceholderData,
+    loading: coord.isLoading || location.isLoading || weather.isLoading,
     error: {
-      coord: coord.error,
-      location: city ? (location.error as Error | null) : null,
+      coord: coord.error as Error | null,
+      location: location.error as Error | null,
       weather: weather.error as Error | null,
     },
   };

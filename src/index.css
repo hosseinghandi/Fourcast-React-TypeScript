@@ -5,7 +5,7 @@
 
 @theme {
   --color-foreground: #262626;
-  --color-foreground-mate: #5d5d5d;
+  --color-foreground-mate: #3b3b3b;
 
   /* General Typography */
   --text-small: 12px;
@@ -36,7 +36,7 @@
 
 .dark {
   --color-foreground: #efefef;
-  --color-foreground-mate: #aeaeae;
+  --color-foreground-mate: #363636;
 }
 
 @layer base {

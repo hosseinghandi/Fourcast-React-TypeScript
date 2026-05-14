@@ -13,17 +13,13 @@ export default function WeatherBanner({
   weatherData,
 }: WeatherBannerProps) {
   // data preparation
-
   const { current, daily } = weatherData;
   const { apparent_temperature, weather_code } = current;
   const { temperature_2m_min, temperature_2m_max } = daily;
   const weatherCondiation: WeatherCondition = getWeatherCode(weather_code, 1);
 
   const displayName =
-    location?.name ??
-    location?.address?.city ??
-    location?.address?.town ??
-    "Unknown location";
+    location?.name ?? location?.address?.city ?? location?.address?.town;
 
   return (
     <>
@@ -40,7 +36,7 @@ export default function WeatherBanner({
           className="
         flex flex-row justify-between w-4/5
         md:w-1/2 lg:w-4/5
-        border-b-1 border-foreground-mate"
+        border-b-1 border-foreground"
         >
           <p>
             <span className="sr-only">High temperature</span>
@@ -66,7 +62,7 @@ export default function WeatherBanner({
             aria-hidden="true"
             className="size-icon-small dark:text-foreground"
           />
-          <p>{displayName}</p>
+          <p>{displayName === "" ? "location Not found" : displayName}</p>
         </div>
       </div>
     </>

@@ -31,7 +31,10 @@ export default function SunPath({ sunrise, sunset }: props) {
           {solarCurve.map(({ Icon, className }, i) => (
             <Icon
               key={`SunIcon-${i}`}
-              style={{ color: i === sunIndex ? "#ce8312" : "" }}
+              style={{
+                color:
+                  i === sunIndex ? "#ce8312" : "var(--color-foreground-mate)",
+              }}
               className={className}
             />
           ))}

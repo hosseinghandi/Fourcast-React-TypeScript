@@ -1,27 +1,15 @@
 import CityInput from "../ui/CityInput";
 import iconList from "../../constant/iconList";
 import { useSearch } from "../../context/useSearch";
-import { useEffect, useState } from "react";
+import { useToast } from "../../hooks/useToast";
 
 type Props = { notFoundMessage?: string };
 export default function Header({ notFoundMessage }: Props) {
-  const [showError, setShowError] = useState(false);
-
   const { setCity } = useSearch();
-
-  useEffect(() => {
-    if (!notFoundMessage) return;
-    setShowError(true);
-    const error = setTimeout(() => {
-      setShowError(false);
-    }, 3000);
-    return () => clearTimeout(error);
-  }, [notFoundMessage]);
-
+  const visibility = useToast(notFoundMessage);
   return (
     <>
       <nav aria-label="Main navigation" className="h-nav w-full p-medium ">
-        {/* logo holder */}
         <div
           className="flex flex-row gap-large gap-tight 
         sm:gap-medium items-center flex-wrap"
@@ -39,9 +27,12 @@ export default function Header({ notFoundMessage }: Props) {
         </div>
         {
           <div
-            style={{ top: showError ? "30px" : "-100px" }}
-            className="fixed left-1/2 -translate-x-1/2 tranform-top duration-500 ease
-            border-1 rounded-radius p-medium backdrop-blur-md "
+            className={`max-sm:w-11/12 fixed left-1/2 -translate-x-1/2 tranform-top duration-500 ease border-1 rounded-radius p-medium backdrop-blur-md
+                      ${
+                        visibility && notFoundMessage
+                          ? "top-[30px] max-sm:top-[100px]"
+                          : "-top-[150px]"
+                      }`}
           >
             <p className="text-primary font-bold text-red-900">
               {notFoundMessage}

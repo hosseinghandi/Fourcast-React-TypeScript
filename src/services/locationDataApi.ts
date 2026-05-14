@@ -1,4 +1,5 @@
 import type { LocationResponse, LocationRequest } from "../types/api";
+const BASE_URL = "https://nominatim.openstreetmap.org";
 
 const locationDataApi = async ({
   coord,
@@ -7,36 +8,23 @@ const locationDataApi = async ({
   if (!coord && !city)
     throw new Error("Either city or coordination is required!");
 
-  const endpoint: string = city
-    ? `search?format=json&q=${city}&limit=1`
-    : `reverse?format=jsonv2&lat=${coord?.latitude}&lon=${coord?.longitude}`;
-
-  const res = await fetch(`https://nominatim.openstreetmap.org/${endpoint}`);
-
-  if (!res.ok && city && coord) {
-    // city search failed, fall back to coord
-    const fallbackRes = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${coord.latitude}&lon=${coord.longitude}`,
+  if (city) {
+    const res = await fetch(
+      `${BASE_URL}/search?format=json&q=${encodeURIComponent(city)}&limit=1`,
     );
-    if (!fallbackRes.ok) throw new Error("Failed to fetch location data");
-    return fallbackRes.json();
+    const data = await res.json();
+    if (res.ok && data[0]) return data[0];
   }
 
-  if (!res.ok) throw new Error("Failed to fetch location data");
-
-  const data = await res.json();
-  const locationData = city ? data[0] : data;
-  if (!locationData && coord) {
-    // empty result, fall back to coord
-    const fallbackRes = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${coord.latitude}&lon=${coord.longitude}`,
+  if (coord) {
+    const res = await fetch(
+      `${BASE_URL}/reverse?format=jsonv2&lat=${coord?.latitude}&lon=${coord?.longitude}`,
     );
-    if (!fallbackRes.ok) throw new Error("Failed to fetch location data");
-    return fallbackRes.json();
+    const data = await res.json();
+    if (res.ok && data) return data;
   }
 
-  if (!locationData) throw new Error(`No result found for '${city}'`);
-  return locationData;
+  throw new Error("Fetching location is faild, please try agains");
 };
 
 export default locationDataApi;
