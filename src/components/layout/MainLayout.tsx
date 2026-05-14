@@ -2,17 +2,12 @@ import { Header, BackgroundHandeler } from "../../components";
 import { useSearch } from "../../context/useSearch";
 import { ErrorScreen, Loader, GridLayout } from "../../components";
 import { useFetchedData } from "../../hooks/useFetchedData";
-import { useTheme } from "../../hooks/useTheme";
 export function MainLayout() {
   const { city } = useSearch();
   const { loading, error, weather, location, isLocationPlaceholder } =
     useFetchedData(city);
   // check if any error has occurred during getting data
   const isErrorOccurred = error.coord || error.location || error.weather;
-
-  // change the theme color to white if
-  // it is night time since background gets darker
-  useTheme(weather?.current?.is_day ?? 1, loading, !!isErrorOccurred);
 
   if (loading) return <Loader />;
   if (isErrorOccurred) return <ErrorScreen error={error} />;

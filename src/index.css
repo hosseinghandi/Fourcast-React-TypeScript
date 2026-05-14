@@ -16,8 +16,11 @@
   /* Specific Typography */
 
   --text-temp-current: clamp(8rem, 3.16vi + 7.26rem, 12rem);
-  --text-temp-state: clamp(2.5rem, 1.48vi + 2.15rem, 4.38rem);
+  --text-temp-state-large: clamp(2.5rem, 1.48vi + 2.15rem, 4.38rem);
+  --text-temp-state-medium: clamp(1.88rem, 0.74vi + 1.7rem, 2.81rem);
+  --text-temp-state-small: clamp(1.25rem, 0.74vi + 1.08rem, 2.19rem);
   --text-compass: clamp(0.5rem, 0.2vi + 0.45rem, 0.75rem);
+
   --size-icon-small: 15px;
   --size-icon-secondary: 25px;
   --size-icon-primary: clamp(1.56rem, 0.99vi + 1.33rem, 2.81rem);
@@ -60,6 +63,40 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .hourly-scroll {
+    overflow-x: auto;
+
+    /* THIS creates the timeline */
+    scroll-timeline: --hours inline;
+  }
+
+  .forecast-arrow {
+    animation-name: fadeArrow;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
+    /* Firefox requires duration */
+    animation-duration: 1ms;
+
+    /* connect to scroll */
+    animation-timeline: --hours;
+  }
+
+  @keyframes fadeArrow {
+    0% {
+      opacity: 1;
+    }
+
+    70% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
   .banner {
     grid-area: banner;
   }
@@ -100,6 +137,7 @@
     grid-area: sunpath;
   }
 }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -136,7 +174,6 @@
       "uv uv rain rain "
       "hourly hourly hourly hourly"
       "wind wind sunpath sunpath"
-      "weekly weekly weekly weekly"
       "weekly weekly weekly weekly"
       "humidity visibility pressure pressure";
   }

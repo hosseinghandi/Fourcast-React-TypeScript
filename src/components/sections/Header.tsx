@@ -12,7 +12,7 @@ export default function Header({ notFoundMessage }: Props) {
       <nav aria-label="Main navigation" className="h-nav w-full p-medium ">
         <div
           className="flex flex-row gap-large gap-tight 
-        sm:gap-medium items-center flex-wrap"
+          sm:gap-medium items-center flex-wrap"
         >
           <button
             type="button"
@@ -20,8 +20,10 @@ export default function Header({ notFoundMessage }: Props) {
             onClick={() => setCity(undefined)}
             className="flex flex-row gap-tight items-center hover:cursor-pointer"
           >
-            <span className="text-logo">FourCast</span>
-            <iconList.Logo aria-hidden="true" className="size-icon-primary" />
+            <div className="flex flex-row items-end gap-tight">
+              <span className="text-logo font-semibold">FourCast</span>
+              <iconList.Logo aria-hidden="true" className="size-icon-primary" />
+            </div>
           </button>
           <CityInput />
         </div>
@@ -34,7 +36,7 @@ export default function Header({ notFoundMessage }: Props) {
                           : "-top-[150px]"
                       }`}
           >
-            <p className="text-primary font-bold text-red-900">
+            <p className="text-error font-bold text-red-900">
               {notFoundMessage}
             </p>
           </div>

@@ -3,7 +3,7 @@ import { SearchProvider } from "./context/useSearch";
 function App() {
   return (
     <SearchProvider>
-      <MainLayout />;
+      <MainLayout />
     </SearchProvider>
   );
 }

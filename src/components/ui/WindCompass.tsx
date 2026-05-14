@@ -7,19 +7,19 @@ export default function WindCompass({
 }: Props) {
   return (
     <div
-      className="relative border-1 rounded-full overflow-hidden size-compass"
+      className="relative border-1 rounded-full overflow-hidden size-compass text-compass"
       aria-hidden="true"
     >
-      <span className="absolute top-1 left-1/2 -translate-x-1/2 text-compass text-muted-foreground">
+      <span className="absolute top-1 left-1/2 -translate-x-1/2 text-muted-foreground">
         N
       </span>
-      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-compass text-muted-foreground">
+      <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-muted-foreground">
         S
       </span>
-      <span className="absolute right-1 top-1/2 -translate-y-1/2 text-compass text-muted-foreground">
+      <span className="absolute right-1 top-1/2 -translate-y-1/2 text-muted-foreground">
         E
       </span>
-      <span className="absolute left-1 top-1/2 -translate-y-1/2 text-compass text-muted-foreground">
+      <span className="absolute left-1 top-1/2 -translate-y-1/2 text-muted-foreground">
         W
       </span>
 
@@ -39,7 +39,7 @@ export default function WindCompass({
         -translate-y-1/2 rounded-full bg-black border-1 border-black dark:border-foreground
         text-white flex justify-center items-center"
       >
-        <span className="text-center h-fit text-[10px] ">
+        <span className="text-center h-fit max-lg:text-[10px] text-secondary">
           {wind_speed_10m} m/s
         </span>
       </div>

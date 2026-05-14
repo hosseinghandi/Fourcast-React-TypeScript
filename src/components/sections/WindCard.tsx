@@ -23,11 +23,11 @@ export default function WindCard({
           className="
           flex flex-row justify-between items-center
           md:gap-medium min-[900px]:max-[1350px]:flex-col
-          lg:gap-large  
+          lg:gap-large h-10/12 
           "
         >
-          <table className="w-1/2 md:w-full">
-            <tbody>
+          <table className="w-1/2 md:w-full h-full ">
+            <tbody className="flex flex-col justify-around h-full">
               {tableData.map(({ title, value, unit, aria }) => (
                 <tr
                   key={title}

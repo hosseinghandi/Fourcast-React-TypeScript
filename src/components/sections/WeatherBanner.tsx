@@ -2,7 +2,7 @@ import type { LocationResponse, WeatherResponse } from "../../types/api";
 import type { WeatherCondition } from "../../types/weatherCode";
 import { getWeatherCode } from "../../utils/getWeatherCode";
 import iconList from "../../constant/iconList";
-
+import handelFontSize from "../../utils/handelFontSize";
 type WeatherBannerProps = {
   location: LocationResponse;
   weatherData: WeatherResponse;
@@ -20,6 +20,8 @@ export default function WeatherBanner({
 
   const displayName =
     location?.name ?? location?.address?.city ?? location?.address?.town;
+
+  const fontSize = handelFontSize(weatherCondiation.description);
 
   return (
     <>
@@ -54,8 +56,8 @@ export default function WeatherBanner({
             <span className="sr-only">degrees</span>
           </p>
         </div>
-        <p className="text-temp-state font-bold">
-          {weatherCondiation.category}
+        <p className={`${fontSize} font-bold `}>
+          {weatherCondiation.description}
         </p>
         <div className="flex flex-row gap-tight items-center">
           <iconList.Location

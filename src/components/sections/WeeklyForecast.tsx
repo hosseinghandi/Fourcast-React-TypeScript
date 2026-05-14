@@ -16,7 +16,7 @@ export default function WeeklyForecast({
       <ul
         aria-label="7 day weather forecast"
         className="mt-small flex flex-row 
-        w-full justify-between gap-small overflow-auto"
+        w-full justify-between gap-small "
       >
         {weekDays.map((d, i) => {
           const { cat, path } = pickWeatherIcon(weather_code[d], 1);

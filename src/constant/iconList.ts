@@ -11,6 +11,7 @@ import { GoSun } from "react-icons/go";
 import { BsSunrise } from "react-icons/bs";
 import { BsSunset } from "react-icons/bs";
 import { BiSolidMessageAltError } from "react-icons/bi";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const iconList = {
   Logo: WiDayFog,
@@ -26,5 +27,6 @@ const iconList = {
   SunRise: BsSunrise,
   Sun: GoSun,
   Error: BiSolidMessageAltError,
+  Arrow: IoIosArrowRoundForward,
 };
 export default iconList;
