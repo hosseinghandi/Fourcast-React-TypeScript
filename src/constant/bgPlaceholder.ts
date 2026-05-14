@@ -7,8 +7,8 @@ export const bgPlaceholder: Record<BGPlaceholderType, string> = {
   cloudy: "#6B7F82",
   cloudy_night: "#080D0A",
 
-  fog: "#8B9EA8",
-  fog_night: "#779b87",
+  fogy: "#8B9EA8",
+  fogy_night: "#779b87",
 
   rainy: "#2D4A2D",
   rainy_night: "#1A1520",
